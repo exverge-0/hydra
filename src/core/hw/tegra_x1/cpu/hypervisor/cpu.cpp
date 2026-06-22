@@ -45,9 +45,7 @@ VirtualMachine::VirtualMachine() {
     os_release(config);
 }
 
-VirtualMachine::~VirtualMachine() {
-    HV_ASSERT_SUCCESS(hv_vm_destroy());
-}
+VirtualMachine::~VirtualMachine() { HV_ASSERT_SUCCESS(hv_vm_destroy()); }
 
 Cpu::Cpu()
     : kernel_mem(align(KERNEL_MEM_SIZE, APPLE_PAGE_SIZE)),
