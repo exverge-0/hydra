@@ -60,7 +60,7 @@ enum class AllocateVmMemoryError {
 inline uptr AllocateVmMemory(u64 size) {
     ASSERT_ALIGNMENT(size, APPLE_PAGE_SIZE, Hypervisor, "size")
 
-    void* ptr = mmap(nullptr, size, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, 0, 0);
+    void* ptr = mmap(nullptr, size, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
     ASSERT_THROWING(ptr != MAP_FAILED, Hypervisor,
                     AllocateVmMemoryError::AllocationFailed,
                     "Failed to allocate memory: {:#x}", errno);
