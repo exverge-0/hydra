@@ -45,8 +45,6 @@ jobs:
             - name: Checkout Hydra
               uses: actions/checkout@v6
               with:
-                  repository: SamoZ256/hydra
-                  submodules: recursive
                   path: hydra
                   persist-credentials: true
                   token: ${{ secrets.GITHUB_TOKEN }}
